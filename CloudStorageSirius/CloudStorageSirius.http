@@ -1,0 +1,6 @@
+@CloudStorageSirius_HostAddress = http://localhost:5204
+
+GET {{CloudStorageSirius_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
