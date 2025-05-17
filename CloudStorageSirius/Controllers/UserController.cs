@@ -43,6 +43,21 @@
             return Ok("Usuario registrado correctamente");
         }
 
+        public async Task<IActionResult> GetUserInfoAsync()
+        {
+            // Endpoint para obtener información del usuario autenticado
+            var username = User.Identity?.Name;
+            if (string.IsNullOrEmpty(username))
+                return Unauthorized("Usuario no autenticado");
+
+            var user = await _userService.GetUserInfoAsync(username);
+            if (user == null)
+                return NotFound("Usuario no encontrado");
+
+            return Ok(user);
+
+        }
+
 
     }
 }
