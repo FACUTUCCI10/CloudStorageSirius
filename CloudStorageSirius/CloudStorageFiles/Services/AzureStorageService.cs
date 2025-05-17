@@ -50,7 +50,6 @@ public class AzureStorageService : ICloudStorageService
 
     public async Task<long> GetUserStorageUsageAsync(string username)
     {
-        // 📌 Aquí puedes consultar la DB o usar Azure Metrics API para calcular el almacenamiento usado.
-        return 0; // Temporalmente devuelve 0 hasta que lo implementemos correctamente.
+        return 0;
     }
 }
