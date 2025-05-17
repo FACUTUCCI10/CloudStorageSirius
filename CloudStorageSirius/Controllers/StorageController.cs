@@ -8,8 +8,8 @@
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    
     // Todos los endpoints requieren autenticación
-
     public class StorageController:ControllerBase
     {
         private readonly StorageServices _storageService;

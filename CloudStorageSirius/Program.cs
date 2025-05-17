@@ -52,3 +52,13 @@ app.MapControllers();
 
 //  8. Iniciar la aplicación
 app.Run();
+
+//  9. Configurar el servicio de almacenamiento en Azure
+var azureConfig = builder.Configuration.GetSection("AzureStorage");
+builder.Services.AddSingleton<ICloudStorageService>(
+    new AzureStorageService(
+        azureConfig["ConnectionString"],
+        azureConfig["ContainerName"]
+    )
+);
+

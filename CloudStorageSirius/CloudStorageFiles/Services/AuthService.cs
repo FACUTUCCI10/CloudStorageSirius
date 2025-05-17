@@ -44,4 +44,18 @@ public class AuthService
         return tokenHandler.WriteToken(token);
         // Devuelve el token generado
     }
+    public async Task<string?> AuthenticateAsync(string username, string password)
+    {
+        // valida las credenciales del usuario
+        if (username == "admin" && password == "clave123")
+        {
+            return GenerateToken(username, isAdmin: true);
+            //retorna el token si el usuario es admin y la contraseña es correcta
+
+        }
+
+        return null;
+    }
+
+
 }
