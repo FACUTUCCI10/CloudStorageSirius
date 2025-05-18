@@ -1,4 +1,4 @@
-﻿namespace CloudStorageSirius.Controllers
+﻿namespace CloudStorageSirius.CloudStorageFiles.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;

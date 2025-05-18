@@ -1,9 +1,10 @@
-﻿namespace CloudStorageSirius.Controllers
+﻿namespace CloudStorageSirius.CloudStorageFiles.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
     using CloudStorageSirius.Services;
-
+    using CloudStorageSirius.Models;
+    
 
 
     [Route("api/[controller]")]
@@ -57,7 +58,5 @@
             return Ok(user);
 
         }
-
-
     }
 }
