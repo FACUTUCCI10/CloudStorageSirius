@@ -1,8 +1,9 @@
-﻿namespace CloudStorageSirius.Controllers
+﻿namespace CloudStorageSirius.CloudStorageFiles.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
     using CloudStorageSirius.Services;
+    using CloudStorageSirius.Models;
 
 
 
@@ -15,7 +16,7 @@
 
         public UserController(AuthService authService, UserService userService)
         {
-           // Constructor de la clase UserController recibe objetos de la clase AuthService y UserService
+            // Constructor de la clase UserController recibe objetos de la clase AuthService y UserService
             _authService = authService;
             _userService = userService;
         }
@@ -31,7 +32,7 @@
             return Ok(new { Token = token });
         }
 
-        // Endpoint para registrar usuarios (opcional)
+        // Endpoint para registrar usuarios 
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterRequest request)
         {
@@ -43,9 +44,10 @@
             return Ok("Usuario registrado correctamente");
         }
 
+        [HttpGet("userinfo")]
         public async Task<IActionResult> GetUserInfoAsync()
         {
-            // Endpoint para obtener información del usuario autenticado
+            
             var username = User.Identity?.Name;
             if (string.IsNullOrEmpty(username))
                 return Unauthorized("Usuario no autenticado");
@@ -55,9 +57,7 @@
                 return NotFound("Usuario no encontrado");
 
             return Ok(user);
-
         }
-
 
     }
 }

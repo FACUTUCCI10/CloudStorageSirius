@@ -34,31 +34,20 @@ builder.Services.AddSwaggerGen(); // Agrega documentación Swagger para probar la
 
 var app = builder.Build();
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
 //  5. Configurar el pipeline de solicitud HTTP
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-//  6. Habilitar autenticación antes de autorización
-app.UseAuthentication();
-app.UseAuthorization();
-
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+//app.UseHttpsRedirection();                               
+//app.UseAuthentication(); //  6. Habilitar autenticación antes de autorización
+//app.UseAuthorization();
 //  7. Mapear controladores (endpoints de la API)
 app.MapControllers();
-
-//  8. Iniciar la aplicación
 app.Run();
 
-//  9. Configurar el servicio de almacenamiento en Azure
-var azureConfig = builder.Configuration.GetSection("AzureStorage");
-builder.Services.AddSingleton<ICloudStorageService>(
-    new AzureStorageService(
-        azureConfig["ConnectionString"],
-        azureConfig["ContainerName"]
-    )
-);
 
